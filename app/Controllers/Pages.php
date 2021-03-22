@@ -19,13 +19,13 @@ class Pages extends BaseController
         ];
         return view('pages/index', $data);
     }
-    public function loginCollection()
+    public function social()
     {
         $data = [
             'title' => 'Login Collector | Login Collection',
             'social' => $this->socialModel->getData()
         ];
-        return view('pages/login_collection', $data);
+        return view('pages/social/social_account', $data);
     }
 
     

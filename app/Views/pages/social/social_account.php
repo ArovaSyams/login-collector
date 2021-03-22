@@ -16,27 +16,32 @@
                 <table class="table table-bordered ppdb" id="dataTable" width="100%" cellspacing="0">
                     <thead class="bg-light">
                         <tr>
-                            <th style="width: 50px;">No.</th>
+                            <th style="width: 50px;">Logo</th>
                             <th>Account</th>
                             <th>Username</th>
-                            <th>email</th>
-                            <th style="width: 100px;">Password</th>
+                            <th>Email</th>
+                            <th style="width: 90px;">Password</th>
+                            <th style="width: 112px;">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($social as $s) :?>
-                        <tr>
-                            <td><img src="img/gmail.svg" alt="" width="40px"></td>
-                            <td><?= $s['account']; ?></td>
-                            <td><?= $s['username']; ?></td>
-                            <td><?= $s['email']; ?></td>
-                            <td class="text-center">
-                                <button type="button" class="btn btn-info align-middle" data-toggle="modal" data-target="#exampleModal">
-                                    <i class="far fa-eye"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <?php endforeach;?>
+                        <?php foreach ($social as $s) : ?>
+                            <tr>
+                                <td><img src="img/gmail.svg" alt="" width="40px"></td>
+                                <td><?= $s['account']; ?></td>
+                                <td><?= $s['username']; ?></td>
+                                <td><?= $s['email']; ?></td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#socialModal" data-password="<?= $s['password']; ?>">
+                                        <i class="far fa-eye"></i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <a href="" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+                                    <a href="" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -44,11 +49,8 @@
     </div>
 </div>
 
-<!-- Button trigger modal -->
-
-
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="socialModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -58,7 +60,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                ...
+                <label for="recipient-name" class="col-form-label">Password :</label>
+                <input type="text" class="form-control" id="recipient-name">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

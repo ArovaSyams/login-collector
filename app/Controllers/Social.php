@@ -18,7 +18,7 @@ class Social extends BaseController
             'title' => 'Login Collector | Add Account',
             'validation' => \Config\Services::validation()
         ];
-        return view('pages/create', $data);
+        return view('pages/social/create', $data);
     }
 
     public function save()
@@ -58,7 +58,7 @@ class Social extends BaseController
             'account' => $this->request->getVar('account'),
             'username' => $this->request->getVar('username'),
             'email' => $this->request->getVar('email'),
-            'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT)
+            'password' => $this->request->getVar('password')
         ]);
 
         session()->setFlashData('pesan', 'Data Berhasil Ditambahkan');
