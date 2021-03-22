@@ -124,4 +124,11 @@ class Auth extends BaseController
         return redirect()->to('index');
     }
 
+    public function logout()
+    {
+        unset($_SESSION['email']);
+
+        return redirect()->to('index');
+    }
+
 }
