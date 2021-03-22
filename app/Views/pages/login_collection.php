@@ -4,33 +4,39 @@
 <div class="mt-3">
     <h2>Login Collection</h2>
     <hr>
+    <?= session()->getFlashdata('pesan'); ?>
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table mr-1"></i>
-            <a href="/admin/ppdb">Your Account Information</a>
+            <a href="/admin/ppdb">Your Social Media Account</a>
         </div>
         <div class="card-body">
+            <a href="/social/create" class="btn btn-primary mb-2">Add Account</a>
             <div class="table-responsive">
                 <table class="table table-bordered ppdb" id="dataTable" width="100%" cellspacing="0">
                     <thead class="bg-light">
                         <tr>
-                            <th>No.</th>
+                            <th style="width: 50px;">No.</th>
                             <th>Account</th>
-                            <th>Username/Email</th>
-                            <th>Password</th>
+                            <th>Username</th>
+                            <th>email</th>
+                            <th style="width: 100px;">Password</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach($social as $s) :?>
                         <tr>
-                            <td>1</td>
-                            <td>Google</td>
-                            <td>Lorem ipsum dolor</td>
+                            <td><img src="img/gmail.svg" alt="" width="40px"></td>
+                            <td><?= $s['account']; ?></td>
+                            <td><?= $s['username']; ?></td>
+                            <td><?= $s['email']; ?></td>
                             <td class="text-center">
                                 <button type="button" class="btn btn-info align-middle" data-toggle="modal" data-target="#exampleModal">
                                     <i class="far fa-eye"></i>
                                 </button>
                             </td>
                         </tr>
+                        <?php endforeach;?>
                     </tbody>
                 </table>
             </div>

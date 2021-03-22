@@ -10277,6 +10277,9 @@ body {
   vertical-align: middle;
   text-align: center;
 }
+.ppdb > tbody > tr > * {
+  vertical-align: middle;
+}
 .ktp {
   width: 110px;
 }
@@ -10286,6 +10289,7 @@ body {
 .ppdb > tbody > tr > .btn-ppdb {
   vertical-align: middle;
 }
+
 @media (max-width: 670px) {
   .galeri-foto {
     width: 100%;
