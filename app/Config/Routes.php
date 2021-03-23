@@ -33,7 +33,11 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Auth::index');
-$routes->get('/login-collection', 'Pages::social');
+$routes->get('/social-account', 'Pages::social');
+$routes->get('/games-account', 'Pages::games');
+$routes->get('/other-account', 'Pages::other');
+$routes->get('/account/password-update', 'Account::passwordUpdate');
+$routes->delete('/account/socialdelete/(:num)', 'Account::socialDelete/$1');
 
 /*
  * --------------------------------------------------------------------

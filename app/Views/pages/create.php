@@ -2,10 +2,31 @@
 <?= $this->section('content'); ?>
 
 <div>
-    <h2>Add Social Media Account</h2>
+    <h2>Add Account Collection</h2>
     <hr>
-    <form action="/social/save" method="post">
+    <form action="/account/save" method="post">
         <?= csrf_field(); ?>
+        <!-- <div class="form-group mb-3">
+            <label for="logo">Logo</label>
+            <select class="custom-select" id="logo" name="logo">
+                <option selected>--Choose--</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div> -->
+        <div class="form-group mb-3">
+            <label for="account-type">Account Type</label>
+            <select class="custom-select <?= ($validation->hasError('account-type')) ? 'is-invalid' : ''; ?>" id="account-type" name="account-type">
+                <option selected>--Choose--</option>
+                <option value="1">Social Media Account</option>
+                <option value="2">Games Account</option>
+                <option value="3">Other Account</option>
+            </select>
+            <div id="account" class="invalid-feedback">
+                <?= $validation->getError('account-type'); ?>
+            </div>
+        </div>
         <div class="form-group">
             <label for="account">Account</label>
             <input type="text" class="form-control <?= ($validation->hasError('account')) ? 'is-invalid' : ''; ?>" id="account" name="account" placeholder="Add your account name" value="<?= old('account'); ?>">
