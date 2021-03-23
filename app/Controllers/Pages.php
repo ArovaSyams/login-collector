@@ -16,9 +16,10 @@ class Pages extends BaseController
     {
         $data = [
             'title' => 'Login Collector | Home',
-            'social' => $this->socialModel->getData('1'),
-            'games' => $this->socialModel->getData('2'),
-            'other' => $this->socialModel->getData('3')
+            'social' => $this->socialModel->where(['account_type' => 1])->limit(5)->find(),
+            'games' => $this->socialModel->where(['account_type' => 2])->limit(5)->find(),
+            'other' => $this->socialModel->where(['account_type' => 3])->limit(5)->find(),
+            'validation' => \Config\Services::validation()
         ];
         return view('pages/index', $data);
     }

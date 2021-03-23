@@ -18,7 +18,7 @@
         <div class="form-group mb-3">
             <label for="account-type">Account Type</label>
             <select class="custom-select <?= ($validation->hasError('account-type')) ? 'is-invalid' : ''; ?>" id="account-type" name="account-type">
-                <option selected>--Choose--</option>
+                <option value="" selected>--Choose--</option>
                 <option value="1">Social Media Account</option>
                 <option value="2">Games Account</option>
                 <option value="3">Other Account</option>
@@ -26,6 +26,7 @@
             <div id="account" class="invalid-feedback">
                 <?= $validation->getError('account-type'); ?>
             </div>
+            <p>Wajib diisi</p>
         </div>
         <div class="form-group">
             <label for="account">Account</label>
