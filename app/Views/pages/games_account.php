@@ -28,7 +28,7 @@
                     <tbody>
                         <?php foreach ($social as $s) : ?>
                             <tr>
-                                <td><img src="img/gmail.svg" alt="" width="40px"></td>
+                                <td><img src="img/<?php $logo = $where->where('logo_name', $s['account'])->first(); echo $logo['logo'];?>" alt="" width="40px" height="40px"></td>
                                 <td><?= $s['account']; ?></td>
                                 <td><?= $s['username']; ?></td>
                                 <td><?= $s['email']; ?></td>

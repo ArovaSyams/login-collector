@@ -27,7 +27,7 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-plus"></i></div>
                         Add Account
                     </a>
-                    <a class="nav-link" href="/admin/linkform">
+                    <a class="nav-link" href="/pages/logo">
                         <div class="sb-nav-link-icon"><i class="fas fa-plus"></i></div>
                         Add Logos
                     </a>

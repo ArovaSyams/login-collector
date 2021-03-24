@@ -39,10 +39,11 @@
     </div>
 </div>
 
+<?php foreach($accountType as $a) : ?>
 <div class="card mb-4">
     <div class="card-header">
         <i class="fas fa-table mr-1"></i>
-        <a href="/admin/ppdb">Social Media Account</a>
+        <a href="/<?= str_replace(' ', '-', strtolower($a['account_type'])); ?>" class="text-dark h5"><?= $a['account_type']; ?></a>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -57,9 +58,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($social as $s) : ?>
+                    <?php foreach ($account->where(['account_type' => $a['id']])->limit(5)->find() as $s) : ?>
                         <tr>
-                            <td><img src="img/gmail.svg" alt="" width="40px"></td>
+                            <td><img src="img/<?php $logo = $where->where('logo_name', $s['account'])->first(); echo $logo['logo'];?>" alt="" width="40px" height="40px"></td>
                             <td><?= $s['account']; ?></td>
                             <td><?= $s['username']; ?></td>
                             <td><?= $s['email']; ?></td>
@@ -75,78 +76,8 @@
         </div>
     </div>
 </div> 
-<div class="card mb-4">
-    <div class="card-header">
-        <i class="fas fa-table mr-1"></i>
-        <a href="/admin/ppdb">Social Media Account</a>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered ppdb" id="dataTable" width="100%" cellspacing="0">
-                <thead class="bg-light">
-                    <tr>
-                        <th style="width: 50px;">Logo</th>
-                        <th>Account</th>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th style="width: 90px;">Password</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($games as $s) : ?>
-                        <tr>
-                            <td><img src="img/gmail.svg" alt="" width="40px"></td>
-                            <td><?= $s['account']; ?></td>
-                            <td><?= $s['username']; ?></td>
-                            <td><?= $s['email']; ?></td>
-                            <td class="text-center">
-                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#passwordModal" data-password="<?= $s['password']; ?>" data-id="<?= $s['id']; ?>">
-                                    <i class="far fa-eye"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div> 
-<div class="card mb-4">
-    <div class="card-header">
-        <i class="fas fa-table mr-1"></i>
-        <a href="/admin/ppdb">Social Media Account</a>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered ppdb" id="dataTable" width="100%" cellspacing="0">
-                <thead class="bg-light">
-                    <tr>
-                        <th style="width: 50px;">Logo</th>
-                        <th>Account</th>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th style="width: 90px;">Password</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($other as $s) : ?>
-                        <tr>
-                            <td><img src="img/gmail.svg" alt="" width="40px"></td>
-                            <td><?= $s['account']; ?></td>
-                            <td><?= $s['username']; ?></td>
-                            <td><?= $s['email']; ?></td>
-                            <td class="text-center">
-                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#passwordModal" data-password="<?= $s['password']; ?>" data-id="<?= $s['id']; ?>">
-                                    <i class="far fa-eye"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div> 
+<?php endforeach;?>
+
 
 <!-- Modal  -->
 <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -4,9 +4,9 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class AccountModel extends Model
+class AccountTypeModel extends Model
 {
-    protected $table = 'account';
+    protected $table = 'account_type';
     protected $allowedFields = ['account_type', 'account', 'username', 'email', 'password'];
 
     public function getData($slug = false)
