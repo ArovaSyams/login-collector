@@ -42,7 +42,7 @@
 <?php foreach($accountType as $a) : ?>
 <div class="card mb-4">
     <div class="card-header">
-        <i class="fas fa-table mr-1"></i>
+        <i class="fas fa-shield-alt mr-1"></i>
         <a href="/<?= str_replace(' ', '-', strtolower($a['account_type'])); ?>" class="text-dark h5"><?= $a['account_type']; ?></a>
     </div>
     <div class="card-body">

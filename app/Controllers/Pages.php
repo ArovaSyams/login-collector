@@ -20,13 +20,15 @@ class Pages extends BaseController
 
     public function index()
     {
+        session()->get('user');
+
+        if(!session()->has('user')) {
+            return redirect()->to('/');
+        }
         $data = [
             'title' => 'Login Collector - Home',
             'accountType' => $this->accountTypeModel->getData(),
             'account' => $this->socialModel,
-            // 'social' => $this->socialModel->where(['account_type' => 1])->limit(5)->find(),
-            // 'games' => $this->socialModel->where(['account_type' => 2])->limit(5)->find(),
-            // 'other' => $this->socialModel->where(['account_type' => 3])->limit(5)->find(),
             'where' => $this->logoModel,
             'validation' => \Config\Services::validation()
         ];
@@ -34,6 +36,11 @@ class Pages extends BaseController
     }
     public function social()
     {
+        session()->get('user');
+
+        if(!session()->has('user')) {
+            return redirect()->to('/');
+        }
         $data = [
             'title' => 'Social Media Account -  Login Collector',
             'social' => $this->socialModel->getData('1'),
@@ -42,7 +49,13 @@ class Pages extends BaseController
         ];
         return view('pages/social_account', $data);
     }
-    public function games() {
+    public function games() 
+    {
+        session()->get('user');
+
+        if(!session()->has('user')) {
+            return redirect()->to('/');
+        }
         $data = [
             'title' => 'Games Account -  Login Collector',
             'social' => $this->socialModel->getData('2'),
@@ -51,7 +64,13 @@ class Pages extends BaseController
         ];
         return view('pages/games_account', $data);
     }
-    public function other() {
+    public function other() 
+    {
+        session()->get('user');
+
+        if(!session()->has('user')) {
+            return redirect()->to('/');
+        }
         $data = [
             'title' => 'Other Account -  Login Collector',
             'social' => $this->socialModel->getData('3'),
@@ -60,7 +79,13 @@ class Pages extends BaseController
         ];
         return view('pages/other_account', $data);
     }
-    public function logo() {
+    public function logo() 
+    {
+        session()->get('user');
+
+        if(!session()->has('user')) {
+            return redirect()->to('/');
+        }
         $data = [
             'title' => 'Logos - Login Collector',
             'validation' => \Config\Services::validation(),

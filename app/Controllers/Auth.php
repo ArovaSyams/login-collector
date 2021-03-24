@@ -7,9 +7,9 @@ use App\Models\AuthModel;
 class Auth extends BaseController
 {
     protected $authModel;
-
     public function __construct()
     {
+        
         $this->authModel = new AuthModel();
     }
 
@@ -126,7 +126,7 @@ class Auth extends BaseController
 
     public function logout()
     {
-        unset($_SESSION['user']);
+        session()->remove('user');
 
         return redirect()->to('index');
     }
