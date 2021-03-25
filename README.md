@@ -11,3 +11,7 @@ Often time we forget our login account information, what is our password or emai
 1. import the database inside this folder to your local database
 2. Copy `env` to `.env` and tailor for your app, specifically the baseURL and any database settings.
 3. And to run it you must type this `php spark serve` in your terminal
+
+## Run
+
+The default of email is `admin@gmail.com` and password is `admin`, you can also add your ows account by press register below the login screen
