@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Mar 2021 pada 12.56
+-- Waktu pembuatan: 25 Mar 2021 pada 05.26
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `account` (
   `id` int(11) NOT NULL,
+  `session` int(11) NOT NULL,
   `account_type` int(11) NOT NULL,
   `account` varchar(200) NOT NULL,
   `username` varchar(200) NOT NULL,
@@ -40,10 +41,11 @@ CREATE TABLE `account` (
 -- Dumping data untuk tabel `account`
 --
 
-INSERT INTO `account` (`id`, `account_type`, `account`, `username`, `email`, `password`) VALUES
-(1, 1, 'Facebook', 'User', 'user@gmail.com', 'wertyuiop'),
-(2, 2, 'Valorant', 'User', 'user@gmail.com', 'qweqweqwe'),
-(3, 3, 'AWS', 'User', 'user@gmail.com', 'sadads');
+INSERT INTO `account` (`id`, `session`, `account_type`, `account`, `username`, `email`, `password`) VALUES
+(1, 1, 1, 'Facebook', 'User', 'user@gmail.com', 'wertyuiop'),
+(2, 1, 2, 'Valorant', 'User', 'user@gmail.com', 'qweqweqwe'),
+(3, 1, 3, 'AWS', 'User', 'user@gmail.com', 'sadads'),
+(6, 1, 1, 'Twitter', 'user', 'user', 'saddsad');
 
 -- --------------------------------------------------------
 
@@ -172,7 +174,7 @@ ALTER TABLE `logo`
 -- AUTO_INCREMENT untuk tabel `account`
 --
 ALTER TABLE `account`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `account_type`
