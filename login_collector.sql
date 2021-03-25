@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Mar 2021 pada 05.26
+-- Waktu pembuatan: 25 Mar 2021 pada 05.28
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -77,16 +77,15 @@ CREATE TABLE `login_session` (
   `id` int(11) NOT NULL,
   `username` varchar(250) NOT NULL,
   `email` varchar(250) NOT NULL,
-  `password` varchar(250) NOT NULL,
-  `show_password` varchar(250) NOT NULL
+  `password` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `login_session`
 --
 
-INSERT INTO `login_session` (`id`, `username`, `email`, `password`, `show_password`) VALUES
-(1, 'Admin', 'admin@gmail.com', '$2y$10$KskqBJN9dmge20PIX8KkAebpLNC6ggTZ9JM7CBWJrhG8DiVYWj/xu', 'admin');
+INSERT INTO `login_session` (`id`, `username`, `email`, `password`) VALUES
+(1, 'Admin', 'admin@gmail.com', '$2y$10$KskqBJN9dmge20PIX8KkAebpLNC6ggTZ9JM7CBWJrhG8DiVYWj/xu');
 
 -- --------------------------------------------------------
 

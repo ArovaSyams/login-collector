@@ -117,8 +117,7 @@ class Auth extends BaseController
         $this->authModel->save([
             'username' => $this->request->getVar('username'),
             'email' => $this->request->getVar('email'),
-            'password' => password_hash($this->request->getVar('password1'), PASSWORD_DEFAULT),
-            'show_password' => $this->request->getVar('password1')
+            'password' => password_hash($this->request->getVar('password1'), PASSWORD_DEFAULT)
         ]);
 
         session()->setFlashdata('pesan', '<div class="alert alert-success" role="alert">Akun anda telah di registrasi, Silahkan Login</div>');
