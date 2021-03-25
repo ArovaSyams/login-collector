@@ -54,14 +54,14 @@ class Auth extends BaseController
                 //inisiasi session
                 $uData = [
                     'username' => $user['username'],
-                    'email' => $user['email']
+                    'id' => $user['id']
                 ];
 
                 session()->set('user', $uData);
 
                 //pengecekan session
                 if (session()->has('user')) {
-                    return redirect()->to('/pages/index');
+                    return redirect()->to('/pages');
                 }
             } else {
                 session()->setFlashdata('pesan', '<div class="alert alert-danger" role="alert">Password anda salah</div>');

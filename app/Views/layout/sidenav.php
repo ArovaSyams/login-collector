@@ -35,7 +35,7 @@
             </div>
             <div class="sb-sidenav-footer">
                 <div class="small">Enter as :</div>
-                <?= session()->get('admin'); ?>
+                <?= $user; ?>
             </div>
         </nav>
     </div>

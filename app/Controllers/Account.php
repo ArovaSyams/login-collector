@@ -15,14 +15,15 @@ class Account extends BaseController
 
     public function create()
     {
-        session()->get('user');
+        $user = session()->get('user');
 
         if(!session()->has('user')) {
             return redirect()->to('/');
         }
         $data = [
             'title' => 'Login Collector | Add Account',
-            'validation' => \Config\Services::validation()
+            'validation' => \Config\Services::validation(),
+            'user' => $user['id']
         ];
         return view('pages/create', $data);
     }

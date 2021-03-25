@@ -10,12 +10,16 @@ class Pages extends BaseController
     protected $socialModel;
     protected $accountTypeModel;
     protected $logoModel;
+    protected $user;
+    protected $userAcc;
 
     public function __construct()
     {
         $this->socialModel = new AccountModel();
         $this->accountTypeModel = new AccountTypeModel();
         $this->logoModel = new LogoModel();
+        $this->user = session()->get('user');
+        $this->userAcc = $this->socialModel->where('session', $this->user['id']);
     }
 
     public function index()
@@ -28,8 +32,9 @@ class Pages extends BaseController
         $data = [
             'title' => 'Login Collector - Home',
             'accountType' => $this->accountTypeModel->getData(),
-            'account' => $this->socialModel,
+            'account' => $this->userAcc,
             'where' => $this->logoModel,
+            'user' => $this->user['username'],
             'validation' => \Config\Services::validation()
         ];
         return view('pages/index', $data);
@@ -41,9 +46,11 @@ class Pages extends BaseController
         if(!session()->has('user')) {
             return redirect()->to('/');
         }
+
         $data = [
             'title' => 'Social Media Account -  Login Collector',
-            'social' => $this->socialModel->getData('1'),
+            'social' => $this->userAcc->getData('1'),
+            'user' => $this->user['username'],
             'where' => $this->logoModel,
             'validation' => \Config\Services::validation()
         ];
@@ -58,7 +65,8 @@ class Pages extends BaseController
         }
         $data = [
             'title' => 'Games Account -  Login Collector',
-            'social' => $this->socialModel->getData('2'),
+            'social' => $this->userAcc->getData('2'),
+            'user' => $this->user['username'],
             'where' => $this->logoModel,
             'validation' => \Config\Services::validation()
         ];
@@ -73,7 +81,8 @@ class Pages extends BaseController
         }
         $data = [
             'title' => 'Other Account -  Login Collector',
-            'social' => $this->socialModel->getData('3'),
+            'social' => $this->userAcc->getData('3'),
+            'user' => $this->user['username'],
             'where' => $this->logoModel,
             'validation' => \Config\Services::validation()
         ];
@@ -89,6 +98,7 @@ class Pages extends BaseController
         $data = [
             'title' => 'Logos - Login Collector',
             'validation' => \Config\Services::validation(),
+            'user' => $this->user['username'],
             'logo' => $this->logoModel->getData()
         ];
         return view('pages/logo', $data);
