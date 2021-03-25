@@ -3,11 +3,7 @@
 
 <h1 class="mt-4">Login Collector</h1>
 <hr>
-<?php if (session()->getFlashdata('pesan')) : ?>
-    <div class="alert alert-success" role="alert">
-        <?= session()->getFlashdata('pesan'); ?> <b><?= session()->get("admin") ?></b> <a href="/panduan">Butuh bantuan?</a>
-    </div>
-<?php endif; ?>
+<?= session()->getFlashdata('pesan'); ?>
 
 <div class="row">
     <div class="col-xl-4 col-md-4">

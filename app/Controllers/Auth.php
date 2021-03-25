@@ -61,14 +61,16 @@ class Auth extends BaseController
 
                 //pengecekan session
                 if (session()->has('user')) {
+                    $user = session()->get('user');
+                    session()->setFlashdata('pesan', '<div class="alert alert-success" role="alert">Welcome '. $user['username'] . '</div>');
                     return redirect()->to('/pages');
                 }
             } else {
-                session()->setFlashdata('pesan', '<div class="alert alert-danger" role="alert">Password anda salah</div>');
+                session()->setFlashdata('pesan', '<div class="alert alert-danger" role="alert">Password is wrong</div>');
                 return redirect()->to('index')->withInput();
             }
         } else {
-            session()->setFlashdata('pesan', '<div class="alert alert-danger" role="alert"> Email Tidak terdaftar </div>');
+            session()->setFlashdata('pesan', '<div class="alert alert-danger" role="alert"> Email has not been registred </div>');
             return redirect()->to('index')->withInput();
         }
     }
