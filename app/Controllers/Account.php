@@ -7,15 +7,19 @@ use App\Models\AccountModel;
 class Account extends BaseController
 {
     protected $accountModel;
+    protected $userAcc;
+    protected $user;
 
     public function __construct()
     {
         $this->accountModel = new AccountModel();
+        $this->user = session()->get('user');
+        $this->userAcc = $this->accountModel->where('session', $this->user['id'])->first();
     }
 
     public function create()
     {
-        $user = session()->get('user');
+        session()->get('user');
 
         if(!session()->has('user')) {
             return redirect()->to('/');
@@ -23,7 +27,7 @@ class Account extends BaseController
         $data = [
             'title' => 'Login Collector | Add Account',
             'validation' => \Config\Services::validation(),
-            'user' => $user['id']
+            'user' => $this->user['id']
         ];
         return view('pages/create', $data);
     }
@@ -39,10 +43,9 @@ class Account extends BaseController
                 ]
             ],
             'account' => [
-                'rules' => 'required|is_unique[account.account]',
+                'rules' => 'required',
                 'errors' => [
                     'required' => '{field} field required',
-                    'is_unique' => '{field} field must be unique'
                 ]
             ],
             'username' => [
@@ -68,6 +71,7 @@ class Account extends BaseController
             return redirect()->to('/account/create')->withInput();
         }
         $this->accountModel->save([
+            'session' => $this->userAcc['id'],
             'account_type' => $this->request->getVar('account-type'),
             'account' => $this->request->getVar('account'),
             'username' => $this->request->getVar('username'),
@@ -95,6 +99,7 @@ class Account extends BaseController
     {
         $this->accountModel->save([
             'id' => $this->request->getVar('id'),
+            'session' => $this->userAcc['id'],
             'account_type' => $this->request->getVar('account-type'),
             'account' => $this->request->getVar('account'),
             'username' => $this->request->getVar('username'),

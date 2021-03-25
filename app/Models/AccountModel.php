@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class AccountModel extends Model
 {
     protected $table = 'account';
-    protected $allowedFields = ['account_type', 'account', 'username', 'email', 'password'];
+    protected $allowedFields = ['session', 'account_type', 'account', 'username', 'email', 'password'];
 
     public function getData($slug = false)
     {
